@@ -9,7 +9,7 @@ function App() {
   const [year, setYear] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [searchType, setSearchType] = useState('title');
-  const [library] = useState(new Library());\
+  const [library] = useState(new Library());
   const [availableBooks, setAvailableBooks] = useState([]);
   const [borrowedBooks, setBorrowedBooks] = useState([]);
 
