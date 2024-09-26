@@ -1,5 +1,5 @@
 // src/tests/Library.test.js
-import { describe, it, expect } from 'vitest';
+import { describe, it , expect} from 'vitest';
 import Library from '../utils/Library';
 
 // Tests for Adding Books:
@@ -15,7 +15,7 @@ describe('Library with simulated user input', () => {
     const year = 2020;
 
     library.addBookFromInput(isbn, title, author, year);
-
+    
     const availableBooks = library.getAvailableBooks();
     expect(availableBooks.some(b => b.isbn === isbn)).toBe(true);
   });
@@ -44,7 +44,7 @@ describe('Library with simulated user input', () => {
     expect(searchResults[0].title).toBe('JavaScript Basics');
   });
 
-  // Tests for View/Search Book by title:
+   // Tests for View/Search Book by title:
 
   it('should search books by title', () => {
     const library = new Library();
@@ -58,7 +58,7 @@ describe('Library with simulated user input', () => {
     expect(searchResults[0].title).toBe('React in Action');
   });
 
-  // Tests for View/Search Book by author:
+   // Tests for View/Search Book by author:
 
   it('should search books by author', () => {
     const library = new Library();
@@ -72,7 +72,7 @@ describe('Library with simulated user input', () => {
     expect(searchResults[0].title).toBe('React in Action');
   });
 
-  // Tests for View/Search Book if no matching found:
+     // Tests for View/Search Book if no matching found:
 
   it('should return empty array if no matching book is found', () => {
     const library = new Library();
@@ -85,6 +85,8 @@ describe('Library with simulated user input', () => {
     expect(searchResults.length).toBe(0);
   });
 
+  // Tests for Return book:
+  
   it('should return a borrowed book to the library', () => {
     const library = new Library();
 
@@ -97,5 +99,7 @@ describe('Library with simulated user input', () => {
     library.addBookFromInput(isbn, title, author, year);
     library.borrowBook(isbn);
     library.returnBook(isbn);
+
+    expect(library.getAvailableBooks().some(b => b.isbn === isbn)).toBe(true);
   });
 });

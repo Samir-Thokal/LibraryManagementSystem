@@ -43,8 +43,13 @@ class Library {
 
   //Implement return Book:
   returnBook(isbn) {
+    const book = this.books.find(b => b.isbn === isbn && b.isBorrowed); // Fixed `b` instead of `book`
+    if (book) {
+      book.isBorrowed = false;
+    } else {
+      throw new Error(`Book with ISBN ${isbn} is not currently borrowed.`);
+    }
   }
-
 }
 
 export default Library;
