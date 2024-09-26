@@ -15,13 +15,15 @@ describe('Library with simulated user input', () => {
     const year = 2020;
 
     library.addBookFromInput(isbn, title, author, year);
+
   });
 
+  
   it('should allow a user to borrow a book', () => {
     const library = new Library();
     const book = { isbn: '123', title: 'Test Book', author: 'Author', year: 2020 };
     library.addBook(book);
     library.borrowBook('123');
-  });
 
+  });
 });

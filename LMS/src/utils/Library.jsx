@@ -16,6 +16,12 @@ class Library {
       this.addBook(book);
     }
     borrowBook(isbn) {
+      const book = this.books.find(b => b.isbn === isbn && !b.isBorrowed);
+      if (book) {
+        book.isBorrowed = true;
+      } else {
+        throw new Error('Book is not available');
+      }
     }
  }
   
