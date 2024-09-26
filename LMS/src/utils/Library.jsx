@@ -15,6 +15,8 @@ class Library {
       const book = { isbn, title, author, year };
       this.addBook(book);
     }
+
+    //Implement borrowing Books:
     borrowBook(isbn) {
       const book = this.books.find(b => b.isbn === isbn && !b.isBorrowed);
       if (book) {
@@ -23,6 +25,23 @@ class Library {
         throw new Error('Book is not available');
       }
     }
+
+    //Implement Available/View Books:
+  getAvailableBooks() {
+    return this.books.filter(book => !book.isBorrowed);
+  }
+
+      //Implement searching Books: 
+  searchBook(query) {
+    return this.books.filter(
+      (book) =>
+        book.isbn.includes(query) ||
+        book.title.toLowerCase().includes(query.toLowerCase()) ||
+        book.author.toLowerCase().includes(query.toLowerCase())
+    );
+
+  }
+  
  }
   
   export default Library;
