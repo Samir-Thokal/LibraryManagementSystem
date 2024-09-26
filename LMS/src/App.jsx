@@ -9,13 +9,20 @@ function App() {
   const [year, setYear] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [searchType, setSearchType] = useState('title');
-  const [library] = useState(new Library());
+  const [library] = useState(new Library());\
   const [availableBooks, setAvailableBooks] = useState([]);
   const [borrowedBooks, setBorrowedBooks] = useState([]);
 
   const handleAddBook = () => {
+    // Validate input fields
+    if (!isbn || !title || !author || !year) {
+      alert("Please provide valid input."); // Notify user for empty fields
+      return; // Stop execution if validation fails
+    }
+    
     library.addBookFromInput(isbn, title, author, year);
     setAvailableBooks([...library.getAvailableBooks()]);
+    alert("Book added successfully."); // Notify user
     setIsbn('');
     setTitle('');
     setAuthor('');
@@ -23,27 +30,36 @@ function App() {
   };
 
   const handleBorrowBook = (isbn) => {
-    library.borrowBook(isbn);
-    setAvailableBooks([...library.getAvailableBooks()]);
-    setBorrowedBooks([...borrowedBooks, library.books.find(b => b.isbn === isbn)]);
+    const bookExists = library.books.some(b => b.isbn === isbn);
+    if (bookExists) {
+      library.borrowBook(isbn);
+      setAvailableBooks([...library.getAvailableBooks()]);
+      setBorrowedBooks([...borrowedBooks, library.books.find(b => b.isbn === isbn)]);
+      alert("Book borrowed successfully."); // Notify user
+    } else {
+      alert("Book is not found."); // Notify if book not found
+    }
   };
 
   const handleReturnBook = (isbn) => {
     library.returnBook(isbn);
     setAvailableBooks([...library.getAvailableBooks()]);
     setBorrowedBooks(borrowedBooks.filter(b => b.isbn !== isbn));
+    alert("Book returned successfully."); // Notify user
   };
 
   const handleRemoveBook = (isbn) => {
     setAvailableBooks(availableBooks.filter(book => book.isbn !== isbn));
     library.books = library.books.filter(book => book.isbn !== isbn); // Remove from actual library
+    alert("Book removed successfully."); // Notify user
   };
 
   const handleSearch = () => {
-    if (searchType === 'isbn') {
-      setAvailableBooks([...library.searchBook(searchQuery)]);
+    const searchResults = library.searchBook(searchQuery);
+    if (searchResults.length === 0) {
+      alert("Book is not found."); // Notify if no matching books found
     } else {
-      setAvailableBooks([...library.searchBook(searchQuery)]);
+      setAvailableBooks([...searchResults]);
     }
   };
 
@@ -99,7 +115,7 @@ function App() {
       {/* Book and Borrowed Book lists in columns */}
       <div className="lists">
         <div className="books-list">
-          <h3>Books</h3>
+          <h3>Library Books</h3>
           <table>
             <thead>
               <tr>
