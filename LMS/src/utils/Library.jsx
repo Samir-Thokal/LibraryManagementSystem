@@ -4,7 +4,7 @@ class Library {
       this.books = [];
     }
     //Implement Adding Books:
-    
+
     addBook(book) {
       const newBook = { ...book, isBorrowed: false };
       this.books.push(newBook);
@@ -15,7 +15,9 @@ class Library {
       const book = { isbn, title, author, year };
       this.addBook(book);
     }
-  }
+    borrowBook(isbn) {
+    }
+ }
   
   export default Library;
   

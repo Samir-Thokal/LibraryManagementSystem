@@ -1,5 +1,5 @@
 // src/tests/Library.test.js
-import { describe, it } from 'vitest';
+import { describe, it , expect} from 'vitest';
 import Library from '../utils/Library';
 
 // Tests for Adding Books:
@@ -16,4 +16,12 @@ describe('Library with simulated user input', () => {
 
     library.addBookFromInput(isbn, title, author, year);
   });
+
+  it('should allow a user to borrow a book', () => {
+    const library = new Library();
+    const book = { isbn: '123', title: 'Test Book', author: 'Author', year: 2020 };
+    library.addBook(book);
+    library.borrowBook('123');
+  });
+
 });
