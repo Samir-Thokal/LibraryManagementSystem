@@ -16,10 +16,10 @@ function App() {
   const handleAddBook = () => {
     // Validate input fields
     if (!isbn || !title || !author || !year) {
-      alert("Please provide valid input."); // Notify user for empty fields
+      alert("Please enter valid input."); // Notify user for empty fields
       return; // Stop execution if validation fails
     }
-    
+
     library.addBookFromInput(isbn, title, author, year);
     setAvailableBooks([...library.getAvailableBooks()]);
     alert("Book added successfully."); // Notify user
