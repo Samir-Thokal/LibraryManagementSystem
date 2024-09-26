@@ -31,7 +31,7 @@ class Library {
     return this.books.filter(book => !book.isBorrowed);
   }
 
-      //Implement searching Books: 
+      //Implement searching Book: 
   searchBook(query) {
     return this.books.filter(
       (book) =>
