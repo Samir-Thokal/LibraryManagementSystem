@@ -1,6 +1,6 @@
 // src/tests/Library.test.js
 import { describe, it } from 'vitest';
-import Library from './Library';
+import Library from '../utils/Library';
 
 // Tests for Adding Books:
 
