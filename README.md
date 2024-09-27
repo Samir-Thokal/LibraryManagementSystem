@@ -2,7 +2,7 @@
 
 **Deployed Website Link** :-  [Click Here](https://library-management-system-sigma-two.vercel.app/)
 
-The Library Management System is a web application designed to facilitate the management of books in a library. It allows users to add, search, borrow, return, and remove books, providing a user-friendly interface for tracking available and borrowed books. The application is built using React and Vite, utilizing a component-based architecture and local state management. The development follows Test-Driven Development (TDD) practices, ensuring that all features are thoroughly tested before implementation.
+The Library Management System is a simple web application designed to facilitate the management of books in a library. It allows users to add, search, borrow, return, and remove books, providing a user-friendly interface for tracking available and borrowed books. The application is built using React and Vite, utilizing a component-based architecture and local state management. The development follows Test-Driven Development (TDD) practices, ensuring that all features are thoroughly tested before implementation.
 
 **Features**:-
 
@@ -17,8 +17,6 @@ The Library Management System is a web application designed to facilitate the ma
 *Search Functionality*: Users can search for books by Title or ISBN.<br>
 
 *Notifications*: Alerts notify users for various actions, such as successful addition, borrowing, returning, or removal of books.<br>
-
-*Responsive Design*: The application is responsive and displays the lists of books and borrowed books side by side in a column format.<br>
 
 **Technologies Used**:-
 
